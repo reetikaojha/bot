@@ -26,10 +26,7 @@ server.listen(port, function() {
   // eslint-disable-next-line
   console.log('Server running on port: %d', port);
 });
-
 server.get('/webhook/', function (req, res) {
- 
-  res.sendStatus(200)
+	res.send(req.query)
 })
 
-const token ='EAAE5t3pwPcUBAF2PylCI0wkBm4ZBCt3aZBXXmLR1qH8z8Rr4dilQDvuCMH1wqS5ydarlZCidnzE6NLalX00YDbnnwpYC1OEr2ndNr7ti2OHSrfGLM6gRqnXwZBu7R59IRIGFahUnnK4o6viWZA4U11ZAU11fOFjGvb0AnCrpeY3QZDZD'
