@@ -26,3 +26,18 @@ server.listen(port, function() {
   // eslint-disable-next-line
   console.log('Server running on port: %d', port);
 });
+
+server.post('/webhook/', function (req, res) {
+  let messaging_events = req.body.entry[0].messaging
+  for (let i = 0; i < messaging_events.length; i++) {
+    let event = req.body.entry[0].messaging[i]
+    let sender = event.sender.id
+    if (event.message && event.message.text) {
+      let text = event.message.text
+      sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+    }
+  }
+  res.sendStatus(200)
+})
+
+const token ='EAAE5t3pwPcUBAF2PylCI0wkBm4ZBCt3aZBXXmLR1qH8z8Rr4dilQDvuCMH1wqS5ydarlZCidnzE6NLalX00YDbnnwpYC1OEr2ndNr7ti2OHSrfGLM6gRqnXwZBu7R59IRIGFahUnnK4o6viWZA4U11ZAU11fOFjGvb0AnCrpeY3QZDZD'
