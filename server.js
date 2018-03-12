@@ -27,6 +27,6 @@ server.listen(port, function() {
   console.log('Server running on port: %d', port);
 });
 server.get('/webhook/', function (req, res) {
-	res.send(req.query)
+	res.send(req.query['hub.challenge'])
 })
 
